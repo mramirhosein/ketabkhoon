@@ -1,14 +1,26 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=devise-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Ketabkhooneh</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
-</head>
-<body>
-    <h1>Hello Ketabkhooneh</h1>
-</body>
-</html>
+{% extends 'shared/site.html' %}
+
+
+{% block body %}
+<div style="margin-top:100px;"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <h1>Local Library Home</h1>
+            <p>Welcom to <em>Local Library</em></p>
+            <hr/>
+            <h2>Dynamic Content</h2>
+            <p>The library has the following record counts:</p>
+            <ul class="list-unstyled">
+                <li><p><strong>Number of Books:</strong> {{num_books}}</p></li>
+                <li><p><strong>Number of Bookinstances:</strong> {{num_instances}}</p></li>
+                <li><p><strong>Number of Bookinstances available:</strong> {{num_instances_available}}</p></li>
+                <li><p><strong>Number of Authors:</strong> {{num_author}}</p></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
