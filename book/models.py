@@ -72,4 +72,4 @@ class BookInstance(models.Model):
 
     
     def __str__(self):
-        return '{0} ({1})'.format(self.id,self.book.title)
+        return '{0} ({1}) {2}'.format(self.id,self.book.title,self.borrower)
