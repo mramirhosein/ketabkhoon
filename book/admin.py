@@ -28,10 +28,15 @@ export_as_json.short_description = 'Export selected  as json request'
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title','author','display_genre')
+
     search_fields = ('title',)
+
     inlines = (BookInstanceInline,)
+
     ordering = ('-title',)
+
     filter_horizontal = ('genre','language')
+
     actions = (export_as_json,)
 
     def display_genre(self,obj):
@@ -41,14 +46,17 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_display = ('id','book','due_back','status')
+    list_display = ('book','status','borrower','due_back','id')
+
     list_filter = ('status','due_back')
+
     date_hierarchy =  'due_back'
+
     fieldsets = (
         (None,{
             'fields':('book','imprint')
         }),
         ('Availability',{
-            'fields':('status','due_back'),
+            'fields':('status','due_back','borrower'),
         })
     )

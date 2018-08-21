@@ -19,4 +19,5 @@ from django.urls import path,include,re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^book/',include('book.urls')),
+    path('accounts/',include('django.contrib.auth.urls')),
 ]

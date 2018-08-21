@@ -1,12 +1,35 @@
-{% extends "admin/base_site.html" %}
-{% load i18n %}
+{% extends 'shared/site.html' %}
 
-{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></div>{% endblock %}
+{% block body %}
 
-{% block content %}
+<section class="bg-texture">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
 
-<p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
+            <div class="col" style="margin-top:100px;">
+                <div class="animated rubberband" style="background-color: #2c3e50; border-radius:5px; padding: 20px; color:#fff; width: 500px;">
+                    <div>
+                        <h3 class="tetx-center">Login Form</h3>
+                        <hr style="border-color: #fff;"/>
 
-<p><a href="{% url 'admin:index' %}">{% trans 'Log in again' %}</a></p>
+                        <p>Thanks for spending some quality time with the Web site today.</p>
+
+                        <p><a href="{% url 'login' %}" style="color:cyan;">Log in agein</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col"></div>
+        </div>
+    </div>
+</section>
+
 
 {% endblock %}
+
+
+
+
+
+
