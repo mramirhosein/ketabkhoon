@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^book/',include('book.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
+    re_path(r'^api-auth/',include('rest_framework.urls',namespace='rest_framework')),
+    re_path(r'^api/books/',include('book.urls',namespace='apibooks')),
 ]

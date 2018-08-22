@@ -6,8 +6,16 @@ from django.urls import reverse
 
 from .models import Book,BookInstance,Author,Genre
 from .forms import RenewBookForm
+from .serializers import BookSerializers
+
 
 from django.views import generic
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from rest_framework import generics
 
 import datetime
 
@@ -79,3 +87,28 @@ def renew_book_librarian(request,pk):
     }
     return render(request,'book/book_renewal_librarian.html',context)
 
+
+#class APIListCreateBook(APIView):
+#    def get(self,request,format=None):
+#        books = Book.objects.all()
+#        serializer = BookSerializers(books,many = True)
+#
+#        return Response(serializer.data)
+#
+#    def post(self,request,format=None):
+#        serializers = BookSerializers(data = request.data)
+#        serializers.is_valid(raise_exception = True)
+#        serializers.save()
+#
+#        return Response(serializers.data,status = status.HTTP_201_CREATED)
+
+
+class APIListCreateBook(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializers
+
+
+class APIRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializers
+    
